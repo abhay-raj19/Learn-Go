@@ -24,7 +24,6 @@ func main() {
 
 	greetuser()
 
-	for {
 		firstname, lastname, email, userTickets := getUserInput()
 
 		isValidName, isValidEmail, isValidTicketNumber := validateUser(firstname, lastname, email, userTickets, remainingTickets)
@@ -32,8 +31,8 @@ func main() {
 		if isValidName && isValidTicketNumber && isValidEmail {
 
 			bookings := bookTicket(remainingTickets, userTickets, bookings, firstname, lastname, email, conferanceName)
-			FirstNames := getFirstNames()
-			fmt.Printf("The first names of bookings are: %v\n", FirstNames)
+			
+		
 
 			firstName := []string{}
 			for _, booking := range bookings {
@@ -44,8 +43,6 @@ func main() {
 
 			if remainingTickets == 0 {
 				fmt.Println("Our all tickets have been booked out")
-				break
-
 			}
 
 		} else {
@@ -58,12 +55,10 @@ func main() {
 			if !isValidTicketNumber {
 				fmt.Println("The ticket no You entered up is incorrect , pls correct it up")
 			}
-			continue
 
 		}
 
 	}
-}
 
 func greetuser() {
 	fmt.Printf("Welcome to %v booking application\n", conferanceName)
@@ -91,16 +86,16 @@ func getUserInput() (string, string, string, uint) {
 	var email string
 	var userTickets uint
 	// ask user for their name
-	fmt.Println("Enter your first name: ")
+	fmt.Printf("Enter your first name: ")
 	fmt.Scan(&firstname)
 
-	fmt.Println("Enter your last name: ")
+	fmt.Printf("Enter your last name: ")
 	fmt.Scan(&lastname)
 
-	fmt.Println("Enter your E-mail: ")
+	fmt.Printf("Enter your E-mail: ")
 	fmt.Scan(&email)
 
-	fmt.Println("Enter number of Tickets: ")
+	fmt.Printf("Enter number of Tickets: ")
 	fmt.Scan(&userTickets)
 	return firstname, lastname, email, userTickets
 }
